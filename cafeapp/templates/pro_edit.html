@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div class="col-sm-12 col-xl-12">
+                      <form method="POST" action="{% url 'update_product' d_id=var.id %}" enctype="multipart/form-data">
+                          {% csrf_token %}
+
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">products</h6>
+
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="exampleInputEmail1" class="form-label">product_name</label>-->
+<!--                                    <input type="product_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">-->
+<!--                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+                                <div class="mb-3">
+
+                                   <select>
+                                       <option>{{var.Category_name}}</option>
+
+                                           {% for i in cat %}
+                                       <option>{{i.Category_name}}</option>
+                                         {% endfor %}
+                                   </select>
+
+                                </div>
+
+                             <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label"> product_name</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" name=" product_name" value="{{var.product_name}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Description</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" name="Description" value="{{var.description}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Price</label>
+                                    <input type="number" class="form-control" id="exampleInputPassword1" name="price" value="{{var.price}}">
+                                </div>
+                                <div class="mb-3">
+                                <label for="formFile" class="form-label"> upload product</label>
+                                     <img src="{{var.product_image.url}}" style="width:150px;height:100px;" >
+                                <input class="form-control" type="file" id="formFile" name="product_image">
+                                </div>
+<!--                                <div class="mb-3 form-check">-->
+<!--                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--                                </div>-->
+                                <button type="submit" class="btn btn-primary">Add</button>
+
+                        </div>
+                      </form>
+                    </div>
+
+</body>
+</html>
+{% endblock %}

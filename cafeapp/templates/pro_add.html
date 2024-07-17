@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--<h1>hii</h1>-->
+<body>
+<div class="col-sm-12 col-xl-12">
+                      <form method="POST" action="{% url 'product_save' %}" enctype="multipart/form-data">
+                          {% csrf_token %}
+
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">products</h6>
+
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="exampleInputEmail1" class="form-label">product_name</label>-->
+<!--                                    <input type="product_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">-->
+<!--                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+                                <div class="mb-3">
+
+                                   <select name="Category_name">
+                                        {% for i in cat %}
+                                       <option>{{i.Category_name}}</option>
+                                         {% endfor %}
+                                   </select>
+
+                                </div>
+
+                             <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label"> product_name</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" name=" product_name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Description</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" name="Description">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Price</label>
+                                     <input type="number" class="form-control" id="exampleInputPassword1" name="price">
+                                </div>
+                                <div class="mb-3">
+                                <label for="formFile" class="form-label"> upload product</label>
+                                <input class="form-control" type="file" id="formFile" name="product_image">
+                                </div>
+<!--                                <div class="mb-3 form-check">-->
+<!--                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+<!--                                </div>-->
+                                <button type="submit" class="btn btn-primary">Add</button>
+
+                        </div>
+                      </form>
+                    </div>
+
+</body>
+</html>
+{% endblock %}

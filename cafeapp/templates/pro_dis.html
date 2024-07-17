@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--<h1>hii</h1>-->
+<body>
+<div class="col-sm-12 col-xl-12">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Product Table</h6>
+                            <table class="table" style="width:100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Category_name</th>
+                                        <th>product_name</th>
+                                        <th>description</th>
+                                        <th>price</th>
+                                        <th>Image</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in data %}
+                                    <tr>
+                                        <td>{{i.Category_name}}</td>
+                                        <td>{{i.product_name}}</td>
+                                        <td>{{i.description}}</td>
+                                        <td>{{i.price}}</td>
+                                        <td>
+                                            <img src="{{i.product_image.url}}" style="width:150px;height:100px;">
+                                        </td>
+                                          <td>
+                                             <a href="{% url 'edit_product' d_id=i.id %}">
+                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                             </a>
+                                         </td>
+                                        <td>
+                                             <a href="{% url 'delete_product' d_id=i.id %}">
+                                                <button type="submit" class="btn btn-primary">Delete</button>
+                                             </a>
+                                         </td>
+                                    </tr>
+
+                                {% endfor %}
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+</body>
+</html>
+{% endblock %}
